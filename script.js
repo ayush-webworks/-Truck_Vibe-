@@ -1,191 +1,119 @@
-
-/* =========================================
-   DESI TRUCK VIBES
-   MUSIC + INTERACTIONS
-========================================= */
-
 const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
 
-const playButton = document.getElementById("playButton");
-const playerButton = document.getElementById("playerButton");
-
-const playIcon = document.getElementById("playIcon");
-const playText = document.getElementById("playText");
-
-const musicBars = document.getElementById("musicBars");
-
-const navMusic = document.getElementById("navMusic");
+const currentTimeText = document.getElementById("currentTime");
+const durationText = document.getElementById("duration");
 
 
-/* =========================================
-   PLAY / PAUSE
-========================================= */
+// ================================
+// PLAY / PAUSE
+// ================================
 
-function toggleMusic() {
+playBtn.addEventListener("click", () => {
 
     if (audio.paused) {
 
-        audio.play()
-            .then(() => {
+        audio.play();
 
-                setPlayingState(true);
-
-            })
-            .catch(() => {
-
-                alert(
-                    "Bhai, pehle GitHub mein song.mp3 upload karo 🎵"
-                );
-
-            });
+        playBtn.textContent = "❚❚";
 
     } else {
 
         audio.pause();
 
-        setPlayingState(false);
-
+        playBtn.textContent = "▶";
     }
 
+});
+
+
+// ================================
+// AUDIO TIME
+// ================================
+
+audio.addEventListener("loadedmetadata", () => {
+
+    durationText.textContent = formatTime(audio.duration);
+
+});
+
+
+// ================================
+// PROGRESS
+// ================================
+
+audio.addEventListener("timeupdate", () => {
+
+    if (!audio.duration) return;
+
+    const percent =
+        (audio.currentTime / audio.duration) * 100;
+
+    progress.style.width = percent + "%";
+
+    currentTimeText.textContent =
+        formatTime(audio.currentTime);
+});
+
+
+// ================================
+// CLICK PROGRESS BAR
+// ================================
+
+document
+    .querySelector(".progress-bar")
+    .addEventListener("click", (event) => {
+
+        if (!audio.duration) return;
+
+        const rect =
+            event.currentTarget.getBoundingClientRect();
+
+        const clickPosition =
+            event.clientX - rect.left;
+
+        const percent =
+            clickPosition / rect.width;
+
+        audio.currentTime =
+            percent * audio.duration;
+    });
+
+
+// ================================
+// SONG ENDED
+// ================================
+
+audio.addEventListener("ended", () => {
+
+    playBtn.textContent = "▶";
+
+    progress.style.width = "0%";
+
+    currentTimeText.textContent = "0:00";
+});
+
+
+// ================================
+// FORMAT TIME
+// ================================
+
+function formatTime(seconds) {
+
+    if (isNaN(seconds)) {
+        return "0:00";
+    }
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const remainingSeconds =
+        Math.floor(seconds % 60);
+
+    return (
+        minutes +
+        ":" +
+        String(remainingSeconds).padStart(2, "0")
+    );
 }
-
-
-/* =========================================
-   UI STATE
-========================================= */
-
-function setPlayingState(isPlaying) {
-
-    if (isPlaying) {
-
-        playIcon.textContent = "Ⅱ";
-        playText.textContent = "Pause Music";
-
-        playerButton.textContent = "Ⅱ";
-
-        musicBars.classList.add("playing");
-
-        navMusic.textContent = "⏸ Playing";
-
-    } else {
-
-        playIcon.textContent = "▶";
-        playText.textContent = "Play Music";
-
-        playerButton.textContent = "▶";
-
-        musicBars.classList.remove("playing");
-
-        navMusic.textContent = "🎵 Music";
-
-    }
-
-}
-
-
-/* =========================================
-   BUTTON EVENTS
-========================================= */
-
-playButton.addEventListener(
-    "click",
-    toggleMusic
-);
-
-playerButton.addEventListener(
-    "click",
-    toggleMusic
-);
-
-navMusic.addEventListener(
-    "click",
-    toggleMusic
-);
-
-
-/* =========================================
-   WHEN SONG ENDS
-========================================= */
-
-audio.addEventListener(
-    "ended",
-    () => {
-
-        setPlayingState(false);
-
-    }
-);
-
-
-/* =========================================
-   KEYBOARD SHORTCUT
-   SPACE = PLAY / PAUSE
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.code === "Space" &&
-            event.target.tagName !== "INPUT" &&
-            event.target.tagName !== "TEXTAREA"
-        ) {
-
-            event.preventDefault();
-
-            toggleMusic();
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   SCROLL REVEAL
-========================================= */
-
-const revealElements = document.querySelectorAll(
-    ".vibe-card, .about-left, .about-right"
-);
-
-const observer = new IntersectionObserver(
-    (entries) => {
-
-        entries.forEach(
-            (entry) => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            }
-        );
-
-    },
-    {
-        threshold: .15
-    }
-);
-
-
-revealElements.forEach(
-    (element) => {
-
-        element.style.opacity = "0";
-        element.style.transform =
-            "translateY(30px)";
-        element.style.transition =
-            "opacity .8s ease, transform .8s ease";
-
-        observer.observe(element);
-
-    }
-);
