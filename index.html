@@ -4,93 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Desi Truck Vibes 🚛</title>
+    <title>Desi Truck Vibes</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <!-- Background effects -->
-    <div class="noise"></div>
-    <div class="glow glow-one"></div>
-    <div class="glow glow-two"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
 
     <!-- NAVBAR -->
     <header class="navbar">
-        <a href="#" class="logo">
-            <span>DESI</span>
-            TRUCK
-            <small>VIBES</small>
-        </a>
+        <div class="logo">
+            <span>DESI</span> TRUCK VIBES
+        </div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#vibes">Vibes</a>
-            <a href="#about">About</a>
-        </nav>
-
-        <button class="nav-music" id="navMusic">
-            🎵 Music
-        </button>
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            ON THE ROAD
+        </div>
     </header>
 
 
     <!-- HERO -->
-    <main id="home" class="hero">
+    <main class="hero">
 
         <!-- LEFT CONTENT -->
         <section class="hero-content">
 
-            <p class="eyebrow">
-                ✦ DESI ROADS • TRUCK LIFE • VIBES ✦
-            </p>
+            <div class="small-title">
+                🚛 INDIAN TRUCK CULTURE
+            </div>
 
             <h1>
-                DESI
-                <span>TRUCK</span>
+                DESI<br>
+                <span>TRUCK</span><br>
                 VIBES
             </h1>
 
-            <p class="hero-text">
-                Where the highway meets the desi spirit.
-                Lights, roads, music and the unstoppable
-                truck life.
+            <p class="description">
+                Desi roads. Colourful trucks. Endless journeys.
+                Feel the sound and soul of the Indian highways.
             </p>
 
-            <div class="hero-buttons">
+            <!-- MUSIC PLAYER -->
+            <div class="music-player">
 
-                <button class="main-button" id="playButton">
-                    <span id="playIcon">▶</span>
-                    <span id="playText">Play Music</span>
+                <div class="music-info">
+                    <div class="music-icon">♫</div>
+
+                    <div>
+                        <div class="music-label">NOW PLAYING</div>
+                        <div class="song-name">Desi Highway Vibes</div>
+                    </div>
+                </div>
+
+                <button id="playBtn" class="play-btn">
+                    ▶
                 </button>
 
-                <a href="#vibes" class="outline-button">
-                    Explore Vibes ↓
-                </a>
+                <div class="progress-area">
+                    <div class="progress-bar">
+                        <div id="progress" class="progress"></div>
+                    </div>
+
+                    <div class="time">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
 
             </div>
 
-            <div class="stats">
+            <!-- FEATURES -->
+            <div class="features">
 
-                <div>
-                    <strong>01</strong>
-                    <span>Truck</span>
+                <div class="feature">
+                    <span>✦</span>
+                    <div>
+                        <strong>DESI</strong>
+                        <small>STYLE</small>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>∞</strong>
-                    <span>Vibes</span>
+                <div class="feature">
+                    <span>✦</span>
+                    <div>
+                        <strong>ROAD</strong>
+                        <small>VIBES</small>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>24/7</strong>
-                    <span>Road Life</span>
+                <div class="feature">
+                    <span>✦</span>
+                    <div>
+                        <strong>NONSTOP</strong>
+                        <small>JOURNEY</small>
+                    </div>
                 </div>
 
             </div>
@@ -98,21 +115,22 @@
         </section>
 
 
-        <!-- TRUCK IMAGE -->
+        <!-- RIGHT TRUCK -->
         <section class="truck-section">
 
             <div class="image-glow"></div>
 
             <div class="truck-frame">
 
-                <div class="top-label">
-                    <span>ROAD</span>
-                    <span>LIFE</span>
+                <div class="truck-top-line">
+                    <span>★</span>
+                    DESI HIGHWAY
+                    <span>★</span>
                 </div>
 
                 <img
                     src="truck.jpg"
-                    alt="Desi decorated truck"
+                    alt="Decorated Indian Truck"
                     class="truck-image"
                 >
 
@@ -120,158 +138,30 @@
 
                 <div class="truck-badge">
                     <span>DESI</span>
-                    <strong>ROAD<br>VIBES</strong>
-                </div>
-
-                <div class="scroll-label">
-                    SCROLL TO RIDE ↓
+                    <strong>TRUCK</strong>
+                    <small>VIBES</small>
                 </div>
 
             </div>
+
+            <!-- decorative road line -->
+            <div class="road-line"></div>
 
         </section>
 
     </main>
 
 
-    <!-- VIBES SECTION -->
-    <section id="vibes" class="vibes-section">
-
-        <div class="section-heading">
-
-            <p>THE DESI ROAD</p>
-
-            <h2>
-                ONE TRUCK.
-                <span>ENDLESS VIBES.</span>
-            </h2>
-
-        </div>
-
-        <div class="vibe-cards">
-
-            <article class="vibe-card">
-                <div class="card-number">01</div>
-                <div class="card-icon">🚛</div>
-                <h3>Truck Life</h3>
-                <p>
-                    Every truck carries a story,
-                    a journey and a little bit of home.
-                </p>
-            </article>
-
-            <article class="vibe-card">
-                <div class="card-number">02</div>
-                <div class="card-icon">🛣️</div>
-                <h3>Open Roads</h3>
-                <p>
-                    Long highways, endless roads
-                    and miles waiting ahead.
-                </p>
-            </article>
-
-            <article class="vibe-card">
-                <div class="card-number">03</div>
-                <div class="card-icon">🎵</div>
-                <h3>Road Music</h3>
-                <p>
-                    Turn up the music and let
-                    the road create the vibe.
-                </p>
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section id="about" class="about-section">
-
-        <div class="about-left">
-            <p class="small-title">OUR STORY</p>
-
-            <h2>
-                MADE FOR
-                <span>THE ROAD.</span>
-            </h2>
-        </div>
-
-        <div class="about-right">
-            <p>
-                Desi Truck Vibes is a celebration of India's
-                colourful truck culture — the artwork, lights,
-                horns, highways and the music that keeps the
-                journey alive.
-            </p>
-
-            <p>
-                One truck. One road. One unforgettable vibe.
-            </p>
-        </div>
-
-    </section>
-
-
-    <!-- MUSIC PLAYER -->
-    <div class="music-player" id="musicPlayer">
-
-        <div class="music-info">
-            <div class="music-disc">
-                🎵
-            </div>
-
-            <div>
-                <small>NOW PLAYING</small>
-                <strong>Desi Road Vibes</strong>
-            </div>
-        </div>
-
-        <div class="music-controls">
-
-            <button id="playerButton">
-                ▶
-            </button>
-
-            <div class="music-bars" id="musicBars">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-
-        </div>
-
-    </div>
+    <!-- BOTTOM -->
+    <footer>
+        <span>MADE FOR THE ROAD</span>
+        <span>•</span>
+        <span>KEEP MOVING 🚛</span>
+    </footer>
 
 
     <!-- AUDIO -->
-    <audio id="audio" preload="metadata">
-        <source src="song.mp3" type="audio/mpeg">
-        Your browser does not support audio.
-    </audio>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="footer-logo">
-            DESI TRUCK VIBES
-        </div>
-
-        <p>
-            Built for the road. Powered by vibes. 🚛
-        </p>
-
-        <span>
-            © 2026 Desi Truck Vibes
-        </span>
-
-    </footer>
-
+    <audio id="audio" src="music.mp3" preload="metadata"></audio>
 
     <script src="script.js"></script>
 
